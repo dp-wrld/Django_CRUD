@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<title>CRUD with Dajngo</title>
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+<body>
+  <h3 style="margin-left: 40%; margin-top: 50pt;">Dajngo CRUD Application</h3>
+  <p style="margin-left: 60%;"><a href='{% url "add_user" %}'>+Add User</a></p>
+  <table style="background-color: grey; text-align: center; margin-left: 20%;">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Bdate</th>
+      <th>Gender</th>
+      <th>Position</th>
+      <th>Age</th>
+      <th>Hobby</th>
+      <th>Image</th>
+      <th>Address</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {% for row in data %}
+        <tr>
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.bday}}</td>
+          <td>{{row.gender}}</td>
+          <td>{{row.position}}</td>
+          <td>{{row.age}}</td>
+          <td>{{row.hobby}}</td>
+          <td><img src="{{row.img.url}}"  alt="Avatar" style="height: 100pt; width:190pt;"></td>
+          <td>{{row.address}}</td>
+          <td><a href='{% url "edit_user" uid=row.id %}' >Edit</a></td>
+          <td><a href='{% url "delete_user" uid=row.id %}'>Delete</a></td>
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  
+</body>
+</html>
